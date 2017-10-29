@@ -190,7 +190,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Login_InputField.xml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Login_Progress_Bar_Fill.xml" />
   </ItemGroup>
