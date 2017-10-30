@@ -39,7 +39,10 @@ namespace Login
         int screenHeight;
         static byte[] img = null;
 
-
+        /// <summary>
+        /// Method that starts when Activity is called. Creates all the buttons, textviews and etc.
+        /// </summary>
+        /// <param name="bundle"></param>
         protected override void OnCreate(Bundle bundle)
         {
             screenWidth = Resources.DisplayMetrics.WidthPixels;
@@ -66,6 +69,11 @@ namespace Login
             retakeButton.Click += RetakeButton_Click;
         }
 
+        /// <summary>
+        /// Method that allows to retake picture
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RetakeButton_Click(object sender, EventArgs e)
         {
             _camera.StartPreview();
@@ -74,13 +82,23 @@ namespace Login
             retakeButton.Visibility = ViewStates.Invisible;
 
         }
-
+        /// <summary>
+        /// When analyse button is clicked photo another Activity is started
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void analyseButton_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(ItemDisplayer));
             StartActivity(intent);
         }
 
+        /// <summary>
+        /// When TakePhoto button is clicked then two other buttons appear, and takePhoto button becomes invisible
+        /// also the surfaceview is converted into Byte and then this photo can be sent to analyser
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void TakePhoto_Click(object sender, EventArgs e)
         {
             try
@@ -116,13 +134,22 @@ namespace Login
 
 
         }
-
+        /// <summary>
+        /// Returns image
+        /// </summary>
+        /// <returns></returns>
         public static byte[] GetImage()
         {
             return img;
         }
 
-
+        /// <summary>
+        /// Method that allows to see camera view through surfaceView. Also it configures display orientation to 90 percent
+        /// draws rectangle and turns on focus feature
+        /// </summary>
+        /// <param name="surface"></param>
+        /// <param name="w"></param>
+        /// <param name="h"></param>
         public void OnSurfaceTextureAvailable(Android.Graphics.SurfaceTexture surface, int w, int h)
         {
             _camera = Camera.Open();
@@ -163,6 +190,9 @@ namespace Login
         {
 
         }
+        /// <summary>
+        /// Set information about drawable rectangle, defines its color, size, style position and etc.
+        /// </summary>
         private void DrawRectangle()
         {
             //define the paintbrush
